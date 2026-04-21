@@ -8,10 +8,13 @@ Super Tab Out replaces the default new tab page with a visual dashboard for your
 
 No server. No account. No telemetry. No build step. Load the `extension/` folder and use it.
 
+Release notes are tracked in [`CHANGELOG.md`](./CHANGELOG.md).
+
 ---
 
 ## Highlights
 
+- **Text-first command desk**: a quieter new-tab layout with clear hierarchy, compact controls, and no decorative brand icon in the page header.
 - **Two ways to organize tabs**: switch between domain grouping and Chrome's native Tab Groups.
 - **Fast tab filtering**: press `/` and filter cards, chips, URLs, and group names in real time.
 - **Privacy mode for screen sharing**: click the lock or press `Esc` to hide the tab dashboard behind a clean clock screen.
@@ -26,6 +29,8 @@ No server. No account. No telemetry. No build step. Load the `extension/` folder
 ---
 
 ## Screens and Controls
+
+The page header keeps the product name, greeting, and date visible without showing an extra app icon. This keeps the new tab page clean while the browser extension icon remains available in Chrome or Edge UI.
 
 The top-right controls are intentionally compact:
 
@@ -178,6 +183,11 @@ The only routine external request is:
 No Google Fonts are used. Fonts come from system font stacks.
 
 Privacy mode does not provide a web search box or change the browser search provider.
+
+Store upload packages are generated into `dist/` only:
+
+- `dist/super-tab-out-chrome-1.0.0.zip`
+- `dist/super-tab-out-edge-1.0.0.zip`
 
 ---
 
