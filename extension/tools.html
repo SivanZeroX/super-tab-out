@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Tab Out Tools</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tools.css">
+  <script src="theme-init.js"></script>
+</head>
+<body class="tools-page">
+  <div class="tools-shell">
+    <aside class="tools-sidebar" aria-label="Tools navigation">
+      <div class="tools-sidebar-head">
+        <div>
+          <div class="tools-brand">Super Tab Out</div>
+          <h1 id="toolsTitle">Tools</h1>
+        </div>
+        <a class="tools-dashboard-link" href="index.html" id="dashboardLink">Dashboard</a>
+      </div>
+      <label class="tools-search">
+        <span id="toolSearchLabel">Search tools</span>
+        <input id="toolSearchPage" type="search" autocomplete="off" placeholder="Search tools" aria-label="Search tools">
+      </label>
+      <section class="tools-nav-section">
+        <div class="tools-section-title" data-tool-copy="favoriteTools">Favorites</div>
+        <div id="toolsFavorites" class="tools-list"></div>
+      </section>
+      <section class="tools-nav-section">
+        <div class="tools-section-title" data-tool-copy="allTools">All tools</div>
+        <div id="toolsList" class="tools-list"></div>
+      </section>
+    </aside>
+
+    <main class="tools-workspace">
+      <header class="tools-header">
+        <div>
+          <div class="tools-kicker" id="toolCategory">Local tool</div>
+          <h2 id="toolTitle">JSON</h2>
+          <p id="toolDescription"></p>
+        </div>
+        <div class="tools-header-actions">
+          <button id="useCurrentUrlBtn">Use current URL</button>
+          <button id="favoriteToolBtn">Favorite</button>
+          <button id="copyToolOutputBtn">Copy output</button>
+          <button id="downloadToolOutputBtn">Download</button>
+        </div>
+      </header>
+
+      <section class="tools-panel input-panel" aria-labelledby="toolInputTitle">
+        <div class="tools-panel-head">
+          <div>
+            <h3 id="toolInputTitle">Input</h3>
+            <p id="toolInputHelp">Paste text or use an example.</p>
+          </div>
+          <button class="tool-clear-btn" id="clearToolBtn">Clear</button>
+        </div>
+        <div class="tools-action-bar" id="toolActions"></div>
+        <div class="tool-examples" id="toolExamples"></div>
+        <textarea id="toolInput" class="tool-input" placeholder="Paste text here..." aria-label="Tool input" spellcheck="false"></textarea>
+      </section>
+
+      <section class="tools-panel output-panel" aria-labelledby="toolOutputTitle">
+        <div class="tools-panel-head">
+          <div>
+            <h3 id="toolOutputTitle">Result</h3>
+            <p id="toolStatus" class="tool-status">Ready</p>
+          </div>
+          <div class="tool-view-switch" role="tablist" aria-label="Result view">
+            <button class="active" id="previewViewBtn" data-result-view="preview" role="tab" aria-selected="true">Preview</button>
+            <button id="textViewBtn" data-result-view="text" role="tab" aria-selected="false">Text</button>
+          </div>
+        </div>
+        <div class="tool-diagnostics" id="toolDiagnostics" hidden></div>
+        <div class="tool-preview active" id="toolPreview" role="tabpanel" aria-labelledby="previewViewBtn"></div>
+        <textarea id="toolOutput" class="tool-output-area" readonly aria-label="Tool output" spellcheck="false"></textarea>
+      </section>
+    </main>
+  </div>
+
+  <div class="tools-toast" id="toolsToast"></div>
+
+  <script src="services/html-service.js"></script>
+  <script src="services/storage-service.js"></script>
+  <script src="services/tabs-service.js"></script>
+  <script src="services/tools-service.js"></script>
+  <script src="tools.js"></script>
+</body>
+</html>

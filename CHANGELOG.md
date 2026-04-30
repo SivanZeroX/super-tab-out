@@ -4,6 +4,29 @@ English · [简体中文](./CHANGELOG.zh-CN.md)
 
 All notable changes to Super Tab Out are tracked here.
 
+## Unreleased
+
+### Added
+
+- Added schema-aware storage, tabs, search, actions, and metrics services as the first architecture split for the v1.1 foundation.
+- Added storage migration for `chrome.storage.local`, quota/error toast handling, and lightweight Node unit tests.
+- Added an extension validator for manifest checks, script syntax, service loading order, and store ZIP hygiene.
+- Added unified search indexing for open tabs, Chrome group titles, saved-for-later items, and saved sessions.
+- Added fuzzy search, match highlighting, and `domain:` / `group:` / `url:` / `saved:` filter syntax.
+- Added manifest commands, `sto` omnibox actions, and the optional Side Panel command center.
+- Added Side Panel search, jump, save-for-later, close, duplicate cleanup, recent-closed restore, and session save flows.
+- Added Chrome Tab Groups actions for creating native groups from domain cards, renaming, recoloring, collapsing/expanding, ungrouping, saving sessions, and restoring saved sessions back into Chrome tab groups from the dashboard.
+- Added Tab Health, weekly stats, top domains, achievements, and Side Panel tools for JSON, QR-style encoding, and timestamps.
+- Added a FeHelper-inspired local tools registry, compact Command Center tool directory, three-column Tools workbench, tool favorites/recent history, current-tab shortcuts, structured previews, real local QR SVGs, and session export.
+- Added icon-button `aria-label`s, keyboard activation for tab chips, visible focus states, `prefers-reduced-motion` support, and an external favicon privacy toggle.
+
+### Changed
+
+- Routed saved-for-later, view mode, privacy settings, tab closing, duplicate cleanup, and open-tab search through shared services.
+- Extended the new-tab search pill so it filters both tab cards and saved-for-later/archive entries.
+- Updated permissions and privacy documentation for `sidePanel` and `sessions`.
+- Updated privacy documentation for the external favicon toggle.
+
 ## 1.0.1 - 2026-04-22
 
 ### Changed

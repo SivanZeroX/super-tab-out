@@ -8,7 +8,7 @@ This policy explains what data the extension uses, where it is stored, and what 
 
 ## Single Purpose
 
-Super Tab Out helps users organize, filter, save, and close their currently open browser tabs from a local new-tab dashboard.
+Super Tab Out helps users organize, filter, save, restore, and close browser tabs from a local new-tab dashboard and optional side panel.
 
 ## Data the Extension Uses
 
@@ -20,6 +20,7 @@ Super Tab Out may read the following browser tab information to render the dashb
 - tab active state
 - tab pinned state
 - Chrome Tab Group ID and group metadata
+- recently closed tab/window metadata exposed by `chrome.sessions`
 
 This information is used only to display and manage tabs inside the extension UI.
 
@@ -29,6 +30,9 @@ Super Tab Out stores the following data locally on the user's device:
 
 - saved-for-later tab URLs and titles
 - saved-for-later completion/archive state
+- saved session URLs, titles, order, pinned state, and group labels
+- lightweight local activity stats and achievement flags
+- local tool favorites, recent tools, and small per-tool draft state
 - privacy mode state and privacy screen settings
 - selected view mode
 - selected language
@@ -48,6 +52,8 @@ Super Tab Out does not:
 - require an account
 - run a backend service
 
+The local tools workbench runs inside the extension. Text entered into JSON, URL, encoding, timestamp, QR, UUID/password, hash, cookie, and session export tools is processed locally and is not sent to a remote service.
+
 ## External Requests
 
 Super Tab Out may request favicons from:
@@ -58,6 +64,8 @@ https://icons.duckduckgo.com
 
 These requests are used to display small site icons next to tab entries. Favicons are cached locally for up to 7 days to reduce repeated network requests.
 
+Users can disable external favicon requests in the privacy settings. When disabled, cached favicons may still render, but new domains will not request icons from the external service.
+
 Privacy mode does not provide a web search box and does not change the browser search provider.
 
 ## Permissions
@@ -67,8 +75,10 @@ Super Tab Out requests the following extension permissions:
 | Permission | Purpose |
 | --- | --- |
 | `tabs` | Read open tabs, focus tabs, close tabs, and create tab groups |
-| `storage` | Store saved tabs and local preferences |
-| `tabGroups` | Read Chrome Tab Groups and render grouped tab views |
+| `storage` | Store saved tabs, saved sessions, local stats, and local preferences |
+| `tabGroups` | Read, create, update, collapse, and ungroup Chrome Tab Groups |
+| `sidePanel` | Show the optional side panel command center |
+| `sessions` | Display and restore recently closed browser tabs/windows |
 
 The extension requests only the permissions needed for its stated tab-dashboard purpose.
 
@@ -95,4 +105,3 @@ If this privacy policy changes, the updated version will be published in this re
 For support or privacy questions, use the GitHub repository:
 
 https://github.com/SivanCola/super-tab-out
-

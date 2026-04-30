@@ -55,3 +55,37 @@
 2. P1 再做侧边栏、快捷键、omnibox 和最近关闭恢复。
 3. P2 在实用闭环稳定后接入 AI 分组、命名、摘要和清理建议。
 4. P3 最后补趣味化、统计和成就，让产品更有长期使用动力。
+
+## 落地计划与版本里程碑 - 2026-04-30
+
+总目标：把 Super Tab Out 从“新标签页标签看板”升级为本地优先的 Tab Command Center。新标签页负责整体整理，Side Panel 负责随时搜索、跳转、保存、关闭和恢复，omnibox 与 commands 提供键盘入口，P3 统计与成就用于增强长期留存，侧边栏工具箱作为轻量辅助能力。
+
+### 阶段计划
+
+- [x] 阶段 0 - 基础治理：拆分 `extension/app.js`，抽象 tabs/storage/search/actions/metrics 服务，加入 storage schema version、迁移函数、quota 与错误提示，并补最小校验链路。
+- [x] 阶段 1 - 搜索核心升级：建立统一搜索索引，覆盖 title、URL、domain、Chrome group title、saved-for-later 和 saved sessions，支持模糊搜索、高亮匹配和 `domain:` / `group:` / `url:` / `saved:` 过滤语法。
+- [x] 阶段 2 - 快捷入口：增加 manifest `commands` 与 omnibox keyword `sto`，支持打开侧边栏、搜索标签、跳转标签、保存会话和触发核心整理动作。
+- [x] 阶段 3 - Side Panel MVP：新增侧边栏页面，支持在不离开当前网页的情况下搜索、跳转、保存稍后、关闭标签、清理重复和查看最近关闭入口。
+- [x] 阶段 4 - Chrome Tab Groups 增强：支持从域名卡片创建原生分组，并支持重命名、改色、折叠、展开、取消分组和保存分组。
+- [x] 阶段 5 - 最近关闭恢复：基于 `chrome.sessions` 展示最近关闭的 tab/window，支持一键恢复，并明确与 Super Tab Out 自己的 Undo 能力区分。
+- [x] 阶段 6 - P3 留存：增加 Tab Health 分数、轻量统计面板和整理成就，统计本周关闭/保存标签数、重复减少量和最常整理/出现的域名。
+- [x] 阶段 7 - 侧边栏工具箱：在 Side Panel 增加本地运行的 Tools tab，提供 JSON 查看/格式化/压缩/校验、二维码编码和时间戳转换。
+
+### 版本里程碑
+
+- [x] v1.1：架构拆分 + 搜索升级 + 无障碍/动效/favicon 隐私选项。
+- [x] v1.2：commands + omnibox。
+- [x] v1.3：Side Panel MVP。
+- [x] v1.4：Tab Groups 操作 + 最近关闭恢复。
+- [x] v1.5：Tab Health + 统计 + 成就。
+- [x] v1.6：Side Panel Tools。
+
+### 横向任务
+
+- [x] 为 icon-only 按钮补齐 `aria-label`。
+- [x] 完善键盘导航和 focus 状态。
+- [x] 增加 `prefers-reduced-motion` 支持。
+- [x] 增加禁用外部 favicon 请求的隐私选项。
+- [x] 更新 README / PRIVACY / STORE_LISTING，解释新增权限、侧边栏入口和本地工具箱。
+- [ ] 做 Chrome / Edge / Brave 手动回归。（Chrome/Edge 启动回归已跑；本机未安装 Brave）
+- [x] 增加基础自动化测试，覆盖 pinned 保护、精确 URL 关闭、重复清理、XSS escape、搜索索引和 storage migration。
