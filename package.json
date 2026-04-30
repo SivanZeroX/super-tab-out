@@ -1,0 +1,15 @@
+{
+  "name": "super-tab-out",
+  "version": "1.0.2",
+  "private": true,
+  "description": "Local-first new tab dashboard extension for Chromium browsers.",
+  "scripts": {
+    "dev": "npm run dev:host",
+    "dev:host": "bash scripts/launch-chrome-testing.sh",
+    "test": "node tests/run-tests.mjs",
+    "validate": "node scripts/validate-extension.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -45,12 +45,15 @@ Highlights:
 - Detect duplicate pages and close extras while keeping one copy
 - Save tabs for later in a local checklist
 - Switch between English and Simplified Chinese
-- Choose from 10 built-in visual themes
+- Choose from 12 built-in visual themes
+- Use a three-column local tools workbench for JSON, URLs, codecs, timestamps, real QR SVGs, hashes, cookies, and session export
 - Refresh automatically when tabs open, close, or navigate
 - Store preferences and saved tabs locally
 
 Privacy:
-Super Tab Out does not require an account, does not use analytics, does not sell data, and does not upload your tab list to a server. Saved tabs and preferences stay on your device. The extension may request favicons from DuckDuckGo's icon service and cache them locally for up to 7 days.
+Super Tab Out does not require an account, does not use analytics, does not sell data, and does not upload your tab list to a server. Saved tabs and preferences stay on your device. The extension may request favicons from DuckDuckGo's icon service and cache them locally for up to 7 days; users can disable external favicon requests in privacy settings.
+
+The local tools workbench processes user input inside the extension. It does not call a backend service.
 
 Attribution:
 Super Tab Out is distributed under the Apache License 2.0. It is a derivative work based on Tab Out by Zara Zhang, which is licensed under the MIT License. Required upstream MIT notices are preserved in this project's NOTICE file. This project is not affiliated with Google, Chrome, Microsoft Edge, Brave, DuckDuckGo, or the original Tab Out author.
@@ -71,8 +74,10 @@ Use these explanations in the Privacy / Permissions sections if requested.
 | Permission | Justification |
 | --- | --- |
 | `tabs` | Required to read open tabs, display tab titles and URLs, focus selected tabs, close tabs, and create tab groups from the dashboard. |
-| `storage` | Required to store saved-for-later tabs, privacy settings, language, theme, and view preferences locally. |
-| `tabGroups` | Required to read Chrome Tab Groups and render the optional grouped-tab view. |
+| `storage` | Required to store saved-for-later tabs, saved sessions, local stats, privacy settings, language, theme, and view preferences locally. |
+| `tabGroups` | Required to read, create, update, collapse, and ungroup Chrome Tab Groups. |
+| `sidePanel` | Required to provide the optional side panel command center while the user stays on the current webpage. |
+| `sessions` | Required to show and restore recently closed browser tabs/windows. |
 
 ## Privacy Practices Answers
 
@@ -83,8 +88,11 @@ Suggested factual answers based on the current implementation:
 - The extension does not transfer tab lists to a backend server.
 - The extension does not collect analytics or telemetry.
 - The extension stores saved tabs and preferences locally using browser storage.
+- The extension stores saved sessions, lightweight stats, and achievement flags locally using browser storage.
+- The extension stores local tool favorites, recent tools, and small per-tool drafts locally using browser storage.
 - The extension uses tab titles and URLs only to render and manage the local dashboard.
-- The extension requests favicons from `icons.duckduckgo.com` and caches them locally.
+- The extension uses `chrome.sessions` only to show and restore recently closed tabs/windows.
+- The extension requests favicons from `icons.duckduckgo.com` only when external favicons are enabled, and caches them locally.
 
 ## Support / Homepage URLs
 
@@ -133,7 +141,7 @@ Chrome Web Store screenshots should show the extension's actual UI. Recommended 
 4. **Theme picker**
    - Upload: `store-assets/screenshot-4-themes.jpg`
    - Open the theme menu.
-   - Show the 10 available palettes.
+   - Show the 12 available palettes.
    - Demonstrates customization.
 
 5. **Chinese UI**
@@ -179,7 +187,7 @@ These files are generated in this repository and can be uploaded directly:
 Before uploading:
 
 - `manifest.json` is at the root of the ZIP.
-- The ZIP contains `app.js`, `background.js`, `index.html`, `style.css`, `theme-init.js`, and `icons/`.
+- The ZIP contains `app.js`, `background.js`, `index.html`, `style.css`, `theme-init.js`, `sidepanel.html`, `sidepanel.css`, `sidepanel.js`, `tools.html`, `tools.css`, `tools.js`, `services/`, and `icons/`.
 - The ZIP does not contain `.git`, `.omx`, `.DS_Store`, `__MACOSX`, or personal `config.local.js`.
 - The version in `manifest.json` is correct for this release.
 - The extension was loaded locally and smoke-tested after packaging.

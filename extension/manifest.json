@@ -1,11 +1,28 @@
 {
   "manifest_version": 3,
   "name": "Super Tab Out",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A local-first new tab dashboard for organizing open tabs with tab filtering, privacy mode, themes, and tab groups.",
-  "permissions": ["tabs", "storage", "tabGroups"],
+  "permissions": ["tabs", "storage", "tabGroups", "sidePanel", "sessions"],
   "chrome_url_overrides": { "newtab": "index.html" },
   "background": { "service_worker": "background.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "omnibox": { "keyword": "sto" },
+  "commands": {
+    "open-side-panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open Super Tab Out side panel"
+    },
+    "save-current-session": {
+      "description": "Save current Super Tab Out session"
+    },
+    "toggle-privacy-mode": {
+      "description": "Toggle Super Tab Out privacy mode"
+    }
+  },
   "action": {
     "default_title": "Super Tab Out",
     "default_icon": {
